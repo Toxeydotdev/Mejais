@@ -1,0 +1,24 @@
+<div style="display: grid;">
+  <h2>Enter a player name below.</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Player Name</mat-label>
+    <input
+      matInput
+      placeholder="Placeholder"
+      [ngModel]="mejaisService.currentSearchPlayer"
+      #playerInput
+    />
+    <mat-icon matSuffix>account_box</mat-icon>
+  </mat-form-field>
+  <div>&nbsp;</div>
+  <div style="display: grid;">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="searchPlayer(playerInput.value)"
+    >
+      Search Player
+    </button>
+  </div>
+</div>
+

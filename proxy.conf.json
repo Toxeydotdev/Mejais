@@ -1,0 +1,14 @@
+{
+  "/positional-rectangles": {
+    "target": "http://localhost:21337",
+    "secure": false
+  },
+  "/static-decklist": {
+    "target": "http://localhost:21337",
+    "secure": false
+  },
+  "/game-result": {
+    "target": "http://localhost:21337",
+    "secure": false
+  }
+}

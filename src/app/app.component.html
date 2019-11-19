@@ -1,0 +1,96 @@
+<mat-toolbar color="primary">
+  <span>Mejai's Win-Streak</span>
+</mat-toolbar>
+<div class="content-main" role="main">
+  <div class="card highlight-card card-small">
+    <img
+      src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2e/Mejai%27s_Soulstealer_item.png/revision/latest?cb=20171221223536"
+      class="mejais-icon"
+    />
+    <span>Welcome to {{ title }}!</span>
+  </div>
+  <mat-tab-group
+    mat-stretch-tabs
+    dynamicHeight
+    mat-align-tabs="center"
+    color="accent"
+    backgroundColor="primary"
+  >
+    <mat-tab label="Introduction">
+      <div class="tab-content">
+        <div class="content">
+          <h2>
+            Welcome! This website is meant to be used alongside
+            <a href="https://playruneterra.com/en-us/">Legends of Runeterra</a>.
+            We are keeping track of win streaks for decks.
+          </h2>
+          <div>&nbsp;</div>
+          <p>
+            The 'Local Player Stats' tab makes calls to your local Legends of
+            Runeterra game client to pick up your current deck and game results.
+            If you don't have a client open, mock data will populate instead.
+          </p>
+          <div>&nbsp;</div>
+          <p>
+            The 'Leaderboard' tab displays information about players with the
+            highest win streaks regardless of decks. You are able to click the
+            profile icon on the leaderboards or enter in a name to search for
+            records related to that player. Enter in a player name from the end of the
+            LCS summer split to receive records.
+          </p>
+          <div>&nbsp;</div>
+          <p>
+            There seems to be an issue when making client API calls from the
+            browser. So in order to get local player stats please go
+            <a
+              href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en"
+              >here and download the plugin for your chrome browser.</a
+            >
+            Keep it on while you are using this website.
+          </p>
+          <p></p>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Local Player Stats">
+      <div class="tab-content">
+        <div *ngIf="!validClient">
+          <div class="content">
+            <h2>Please start a game.</h2>
+          </div>
+        </div>
+        <div *ngIf="validClient">
+          <h2 *ngIf="mejaisService.needMockData" style="color: red;">
+            This is mock data. Please restart your client and refresh this page
+            to get local player stats.
+          </h2>
+          <app-win-streaks [player]="playerData"></app-win-streaks>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Leaderboard">
+      <div class="tab-content">
+        <div class="col">
+          <div class="content" style="border-right: 2px solid #424242;">
+            <app-search-player
+              (passPlayer)="submitSearch()"
+            ></app-search-player>
+          </div>
+        </div>
+        <div class="col">
+          <div class="content">
+            <app-leaderboard (passPlayer)="submitSearch()"></app-leaderboard>
+          </div>
+        </div>
+      </div>
+      <app-win-streaks-search
+        *ngIf="mejaisService.currentSearchPlayer != ''"
+        [player]="mejaisService.currentSearchPlayer"
+      ></app-win-streaks-search>
+    </mat-tab>
+  </mat-tab-group>
+
+  <footer>
+    Thank you for visiting!&nbsp;
+  </footer>
+</div>

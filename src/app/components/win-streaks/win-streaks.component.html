@@ -1,0 +1,74 @@
+<div class="content">
+  <h2>Player Name: {{ player }}</h2>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Current Deck-Code:
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="panel-deckcode">{{ currentDeckCode }}</span>
+          <img
+            *ngIf="currentDeckStreak < 11"
+            class="dark-seal"
+            src="https://gamepedia.cursecdn.com/lolesports_gamepedia_en/1/17/Dark_Seal.png"
+            alt=""
+          />
+          <img
+            *ngIf="currentDeckStreak > 10"
+            class="dark-seal"
+            src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2e/Mejai%27s_Soulstealer_item.png/revision/latest?cb=20171221223536"
+            alt=""
+          />
+          <span class="stacks">{{ currentDeckStreak }}</span>
+          <span class="stack-text">Current Streak:</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="inline-cards" *ngFor="let card of currentDeck">
+        <img
+          class="cards justify-content-center"
+          src="assets/globals/en_us/img/cards/{{ card.code }}.png"
+          alt=""
+        />
+        <span class="quantity">x{{ card.count }}</span>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div>&nbsp;</div>
+  <h2>Previous Decks:</h2>
+  <mat-accordion [multi]="true">
+    <mat-expansion-panel *ngFor="let deck of decks">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Deck-Code:
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="panel-deckcode">{{ deck.actualCode }}</span>
+          <img
+            *ngIf="deck.currentStreak < 11"
+            class="dark-seal"
+            src="https://gamepedia.cursecdn.com/lolesports_gamepedia_en/1/17/Dark_Seal.png"
+            alt=""
+          />
+          <img
+            *ngIf="deck.currentStreak > 10"
+            class="dark-seal"
+            src="https://vignette.wikia.nocookie.net/leagueoflegends/images/2/2e/Mejai%27s_Soulstealer_item.png/revision/latest?cb=20171221223536"
+            alt=""
+          />
+          <span class="stacks">{{ deck.currentStreak }}</span>
+          <span class="stack-text">Current Streak:</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="inline-cards" *ngFor="let card of deck.actualDeck">
+        <img
+          class="cards justify-content-center"
+          src="assets/globals/en_us/img/cards/{{ card.code }}.png"
+          alt=""
+        />
+        <span class="quantity">x{{ card.count }}</span>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div *ngIf="decks.length < 1">No records found.</div>
+</div>

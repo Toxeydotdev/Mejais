@@ -1,0 +1,47 @@
+<table
+  mat-table
+  *ngIf="dataSource"
+  [dataSource]="tableData"
+  class="mat-elevation-z8"
+>
+  <ng-container matColumnDef="playerName">
+    <th mat-header-cell *matHeaderCellDef>Player</th>
+    <td mat-cell *matCellDef="let deck">{{ deck.playerName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="deckCode">
+    <th mat-header-cell *matHeaderCellDef>Deck Code</th>
+    <td mat-cell *matCellDef="let deck">{{ deck.deckCode }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="highestWinStreak">
+    <th mat-header-cell *matHeaderCellDef>Highest Streak</th>
+    <td mat-cell *matCellDef="let deck">
+      {{ deck.highestWinStreak }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="profile">
+    <th mat-header-cell *matHeaderCellDef style="padding-left: 2%">Profile</th>
+    <td mat-cell *matCellDef="let deck">
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with a heart icon"
+        (click)="searchPlayer(deck.playerName)"
+      >
+        <mat-icon>account_box</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator
+  *ngIf="dataSource"
+  [length]="dataSource.length"
+  [pageSize]="5"
+  (page)="updateTable($event)"
+>
+</mat-paginator>

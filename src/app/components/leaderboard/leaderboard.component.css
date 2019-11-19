@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+td.mat-cell {
+  font-size: 11px;
+  padding-left: 2%;
+  text-align: center;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}

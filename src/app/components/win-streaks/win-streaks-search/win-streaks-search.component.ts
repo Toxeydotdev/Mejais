@@ -51,6 +51,7 @@ export class WinStreaksSearchComponent implements OnInit {
         });
       });
     } else {
+      this.decks = [];
       this.decksAlt = mockJson.filter(c => c.PlayerName === this.mejaisService.currentSearchPlayer)
         .sort((a, b) => +b.CurrentWinStreak - +a.CurrentWinStreak);
       this.decksAlt.forEach(returnDeck => {

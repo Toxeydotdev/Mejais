@@ -6,6 +6,7 @@ import globalsJson from '../../../assets/globals/en_us/data/set1-en_us.json';
 
 import { MejaisService, Graves } from '../../service/mejais.service';
 import { interval, Observable } from 'rxjs';
+import mockJson from '../../../assets/ezrealdb.json';
 
 @Component({
   selector: 'app-win-streaks',
@@ -70,41 +71,52 @@ export class WinStreaksComponent implements OnInit {
     });
   }
   getPlayer() {
-    this.mejaisService.getMejaisPlayer(this.player).subscribe(resulttwo => {
-      // this.decks = [];
-      resulttwo.forEach(returnDeck => {
-        if (returnDeck.deckCode !== this.currentDeckCode) {
-          if (!this.decks.map(c => c.actualCode).includes(returnDeck.deckCode)) {
-            this.decksAlt.push({
-              actualDeck: decode(returnDeck.deckCode),
-              actualCode: returnDeck.deckCode,
-              currentStreak: returnDeck.currentWinStreak,
-              highestStreak: returnDeck.highestWinStreak,
-              lastUpdateDate: returnDeck.lastUpdateDate
-            });
+    if (!this.mejaisService.needMockData) {
+      this.mejaisService.getMejaisPlayer(this.player).subscribe(resulttwo => {
+        // this.decks = [];
+        resulttwo.forEach(returnDeck => {
+          if (returnDeck.deckCode !== this.currentDeckCode) {
+            if (!this.decks.map(c => c.actualCode).includes(returnDeck.deckCode)) {
+              this.decksAlt.push({
+                actualDeck: decode(returnDeck.deckCode),
+                actualCode: returnDeck.deckCode,
+                currentStreak: returnDeck.currentWinStreak,
+                highestStreak: returnDeck.highestWinStreak,
+                lastUpdateDate: returnDeck.lastUpdateDate
+              });
+            }
+          } else {
+            this.currentDeckStreak = returnDeck.currentWinStreak;
           }
-        } else {
-          this.currentDeckStreak = returnDeck.currentWinStreak;
+        }, error => {
+          this.decks = [];
+        });
+        for (let i = 0; i < this.decksAlt.length; i++) {
+          if (this.decks.length > 0 &&
+            this.decksAlt[i].actualDeck === this.decks[i].actualDeck &&
+            this.decksAlt[i].actualCode === this.decks[i].actualCode &&
+            this.decksAlt[i].currentStreak === this.decks[i].currentStreak &&
+            this.decksAlt[i].highestStreak === this.decks[i].highestStreak &&
+            this.decksAlt[i].lastUpdateDate === this.decks[i].lastUpdate) {
+            continue;
+          } else {
+            this.decks = this.decksAlt;
+          }
         }
-      }, error => {
-        this.decks = [];
       });
-      for (let i = 0; i < this.decksAlt.length; i++) {
-        if (this.decks.length > 0 &&
-          this.decksAlt[i].actualDeck === this.decks[i].actualDeck &&
-          this.decksAlt[i].actualCode === this.decks[i].actualCode &&
-          this.decksAlt[i].currentStreak === this.decks[i].currentStreak &&
-          this.decksAlt[i].highestStreak === this.decks[i].highestStreak &&
-          this.decksAlt[i].lastUpdateDate === this.decks[i].lastUpdate) {
-          continue;
-        } else {
-          this.decks = this.decksAlt;
-        }
-      }
+    } else {
+      this.decksAlt = mockJson.filter(c => c.PlayerName === 'Tox is RIPPIN').sort((a, b) => +b.CurrentWinStreak - +a.CurrentWinStreak);
+      this.decksAlt.forEach(returnDeck => {
+        this.decks.push({
+          actualDeck: decode(returnDeck.DeckCode),
+          actualCode: returnDeck.DeckCode,
+          currentStreak: returnDeck.CurrentWinStreak,
+          highestStreak: returnDeck.HighestWinStreak,
+          lastUpdateDate: returnDeck.LastUpdateDate
+        });
+      });
+    }
 
-
-
-    });
 
   }
 

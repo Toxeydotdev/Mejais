@@ -48,3 +48,4 @@ Thumbs.db
 # personal
 **/src/environments/environment.prod.ts
 **/src/environments/environment.ts
+**/src/assets/ezrealdb.json

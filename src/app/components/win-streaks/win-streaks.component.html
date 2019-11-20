@@ -24,6 +24,8 @@
           <span class="stack-text">Current Streak:</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <span class="panel-deckcode-resp">{{ currentDeckCode }}</span>
+      <p>&nbsp;</p>
       <div class="inline-cards" *ngFor="let card of currentDeck">
         <img
           class="cards justify-content-center"
@@ -60,6 +62,8 @@
           <span class="stack-text">Current Streak:</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <span class="panel-deckcode-resp">{{ deck.actualCode }}</span>
+      <p>&nbsp;</p>
       <div class="inline-cards" *ngFor="let card of deck.actualDeck">
         <img
           class="cards justify-content-center"

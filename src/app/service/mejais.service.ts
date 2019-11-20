@@ -32,8 +32,11 @@ export class MejaisService {
     return throwError(errMsg);
   }
 
-  setMockData() {
+  setMockTrue() {
     this.needMockData = true;
+  }
+  setMockFalse() {
+    this.needMockData = false;
   }
   setPlayer(player: string) {
     this.currentPlayer = player;

@@ -35,8 +35,8 @@
             The 'Leaderboard' tab displays information about players with the
             highest win streaks regardless of decks. You are able to click the
             profile icon on the leaderboards or enter in a name to search for
-            records related to that player. Enter in a player name from the end of the
-            LCS summer split to receive records.
+            records related to that player. Enter in a player name from the end
+            of the LCS summer split to receive records.
           </p>
           <div>&nbsp;</div>
           <p>
@@ -47,6 +47,11 @@
               >here and download the plugin for your chrome browser.</a
             >
             Keep it on while you are using this website.
+          </p>
+          <div>&nbsp;</div>
+          <p>
+            If you're having issues seeing your data in the 'Local Player
+            Stats', please restart your client, start a game and then refresh this page.
           </p>
           <p></p>
         </div>
@@ -71,14 +76,14 @@
     <mat-tab label="Leaderboard">
       <div class="tab-content">
         <div class="col">
-          <div class="content" style="border-right: 2px solid #424242;">
+          <div class="content">
             <app-search-player
               (passPlayer)="submitSearch()"
             ></app-search-player>
           </div>
         </div>
         <div class="col">
-          <div class="content">
+          <div class="content leaderboard">
             <app-leaderboard (passPlayer)="submitSearch()"></app-leaderboard>
           </div>
         </div>
@@ -89,7 +94,10 @@
       ></app-win-streaks-search>
     </mat-tab>
   </mat-tab-group>
-
+  <div>&nbsp;</div>
+  <p>
+    <a href="https://github.com/AnthonyT5591/Mejais">Link to Github Repo</a>
+  </p>
   <footer>
     Thank you for visiting!&nbsp;
   </footer>

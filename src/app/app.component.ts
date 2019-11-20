@@ -24,7 +24,7 @@ export class AppComponent implements AfterViewInit {
     this.getClient();
     setInterval(() => {
       this.getClient();
-    }, 1000 * 5);
+    }, 1000 * 60 * 2);
   }
 
   submitSearch() {
@@ -40,17 +40,18 @@ export class AppComponent implements AfterViewInit {
         this.playerData = result.PlayerName;
         this.mejaisService.setPlayer(this.playerData);
       } else {
-        this.setMock();
+        this.setMockTrue();
       }
     }, error => {
-      this.setMock();
+      this.setMockTrue();
     });
   }
 
-  setMock() {
-    this.mejaisService.setMockData();
+  setMockTrue() {
+    this.mejaisService.setMockTrue();
     this.playerData = 'Tox is RIPPIN';
     this.mejaisService.setPlayer(this.playerData);
     this.validClient = true;
   }
+
 }

@@ -58,10 +58,14 @@ mat-panel-description {
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
   .dark-seal {
-    display: none;
+    width: 25px;
+    height: 25px;
+    margin-left: 63%;
+    margin-top: 1%;
   }
 
   .stacks {
-    display: none;
+    margin-left: 63%;
+    margin-top: 7%;
   }
 }

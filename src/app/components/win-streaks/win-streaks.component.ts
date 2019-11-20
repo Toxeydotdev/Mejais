@@ -38,7 +38,7 @@ export class WinStreaksComponent implements OnInit {
       setInterval(() => {
         this.getEndResult();
         this.getClient();
-      }, 1000 * 5);
+      }, 1000 * 60 * 2);
     } else {
       this.currentDeckCode = this.deckCode;
       this.currentDeck = decode(this.currentDeckCode);
@@ -71,11 +71,11 @@ export class WinStreaksComponent implements OnInit {
   }
   getPlayer() {
     this.mejaisService.getMejaisPlayer(this.player).subscribe(resulttwo => {
-      this.decks = [];
+      // this.decks = [];
       resulttwo.forEach(returnDeck => {
         if (returnDeck.deckCode !== this.currentDeckCode) {
           if (!this.decks.map(c => c.actualCode).includes(returnDeck.deckCode)) {
-            this.decks.push({
+            this.decksAlt.push({
               actualDeck: decode(returnDeck.deckCode),
               actualCode: returnDeck.deckCode,
               currentStreak: returnDeck.currentWinStreak,
@@ -89,7 +89,25 @@ export class WinStreaksComponent implements OnInit {
       }, error => {
         this.decks = [];
       });
+      for (let i = 0; i < this.decksAlt.length; i++) {
+        if (this.decks.length > 0 &&
+          this.decksAlt[i].actualDeck === this.decks[i].actualDeck &&
+          this.decksAlt[i].actualCode === this.decks[i].actualCode &&
+          this.decksAlt[i].currentStreak === this.decks[i].currentStreak &&
+          this.decksAlt[i].highestStreak === this.decks[i].highestStreak &&
+          this.decksAlt[i].lastUpdateDate === this.decks[i].lastUpdate) {
+          continue;
+        } else {
+          this.decks = this.decksAlt;
+        }
+      }
+
+
+
     });
+
   }
 
 }
+
+

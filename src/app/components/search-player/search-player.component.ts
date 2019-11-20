@@ -13,7 +13,7 @@ export class SearchPlayerComponent implements OnInit {
   winStreakSearch: WinStreaksSearchComponent;
 
   @Output() passPlayer = new EventEmitter();
-  constructor(private mejaisService: MejaisService) { }
+  constructor(public mejaisService: MejaisService) { }
 
   ngOnInit() {
   }

@@ -21,7 +21,7 @@ export class LeaderboardComponent implements OnInit {
     this.getLeaderboard();
     setInterval(() => {
       this.getLeaderboard();
-      this.tableData = this.dataSource.slice(0, 9);
+      this.tableData = this.dataSource.slice(0, 5);
     }, 1000 * 60 * 5);
 
   }

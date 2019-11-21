@@ -19,7 +19,6 @@ export class WinStreaksComponent implements OnInit {
 
   cardcode: string;
   imgID: string;
-  // deck: any;
   decks: any[] = [];
   decksAlt: any[] = [];
 
@@ -73,7 +72,6 @@ export class WinStreaksComponent implements OnInit {
   getPlayer() {
     if (!this.mejaisService.needMockData) {
       this.mejaisService.getMejaisPlayer(this.player).subscribe(resulttwo => {
-        // this.decks = [];
         resulttwo.forEach(returnDeck => {
           if (returnDeck.deckCode !== this.currentDeckCode) {
             if (!this.decks.map(c => c.actualCode).includes(returnDeck.deckCode)) {

@@ -12,3 +12,13 @@ td.mat-cell {
 th.mat-header-cell {
   text-align: center;
 }
+
+@media screen and (max-width: 767px) {
+  .table-container {
+    overflow: auto;
+  }
+  table {
+    width: 100%;
+    min-width: none;
+  }
+}

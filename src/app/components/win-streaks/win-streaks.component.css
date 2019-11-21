@@ -1,7 +1,6 @@
 .content {
   max-width: 1100px;
   display: inherit;
-  /* background: lightcoral; */
 }
 
 img.cards {
@@ -24,11 +23,9 @@ img.cards {
 
 .dark-seal {
   position: absolute;
-  /* margin-left: -10%; */
   width: 40px;
   height: 40px;
   margin-left: 70%;
-  /* margin-left: -200px; */
   margin-top: -1%;
 }
 
@@ -44,7 +41,8 @@ img.cards {
   position: absolute;
 }
 .panel-deckcode {
-  max-width: 80%;
+  max-width: 90%;
+  overflow-wrap: break-word;
 }
 
 mat-panel-title {
@@ -59,7 +57,7 @@ mat-panel-description {
   display: none;
 }
 /* Responsive Styles */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 700px) {
   .dark-seal {
     width: 30px;
     height: 30px;
@@ -78,12 +76,15 @@ mat-panel-description {
   mat-panel-title {
     display: none;
   }
-  .stack-text {
-    display: none;
-  }
   .panel-deckcode-resp {
     display: initial;
-    /* font-size: 13px; */
     overflow-wrap: break-word;
   }
 }
+@media (max-width: 1350px) {
+  .stack-text {
+    display: none;
+  }
+}
+
+

@@ -10,7 +10,7 @@ import mockJson from '../../../assets/ezrealdb.json';
 export class LeaderboardComponent implements OnInit {
 
   displayedColumns: string[] = ['playerName', 'deckCode', 'highestWinStreak', 'profile'];
-  dataSource: any;
+  dataSource: any = [];
 
   tableData: any;
 
@@ -29,7 +29,7 @@ export class LeaderboardComponent implements OnInit {
       } else {
         this.getLeaderboard();
       }
-    }, 1000 * 2);
+    }, 1000 * 1);
   }
 
   getLeaderboard() {

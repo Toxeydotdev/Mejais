@@ -1,6 +1,6 @@
-# Mejais Win-Streak
+# Mejai's Win-Streak
 
-Hello! [Mejais Win-Streak](https://mejais-winstreak.com/) is a website to use alongside the game [Legends of Runeterra](https://playruneterra.com/en-us/). It keeps track of your win-streaks based on what deck you are using. There is also a leaderboard that shows the top 100 players and their highest win-streaks and what deck they were using.
+Hello! [Mejai's Win-Streak](https://mejais-winstreak.com/) is a website to use alongside the game [Legends of Runeterra](https://playruneterra.com/en-us/). It keeps track of your win-streaks based on what deck you are using. There is also a leaderboard that shows the top 100 players and their highest win-streaks and what deck they were using.
 
 If I were to improve upon this project, I could see myself turning this into a local application that would run while playing so the user wouldn't have to go to the website. Another thing is to come up with a better way of displaying cards. When looking at a deck, it takes about the whole page which I'm not sure is the best user experience. Of course this is a couple of many ideas that could help improve this application. I am more than willing to consider any input for improvements.
 

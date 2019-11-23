@@ -25,3 +25,7 @@ I really like these dev challenges. The time crunch can get unsettling but havin
 ## Contact
 
 You can reach me at [Twitter](https://twitter.com/_Toxey) or email me at dev.AnthonyT@gmail.com
+
+## Technology
+
+.NET Core, Angular, MySQL all hosted on Google Cloud Platform.
